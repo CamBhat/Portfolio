@@ -10,9 +10,6 @@ export default defineConfig({
       enabled: true
     },
 
-    imageService: "cloudflare",
-    assets: {
-      bindingName: "STATIC_ASSETS"
-    }
+    imageService: "cloudflare"
   })
 });

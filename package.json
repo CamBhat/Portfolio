@@ -8,7 +8,6 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "postbuild": "node scripts/patch-wrangler.mjs",
     "preview": "astro build && wrangler pages dev",
     "astro": "astro",
     "generate-types": "wrangler types",
