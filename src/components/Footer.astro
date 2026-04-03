@@ -1,0 +1,43 @@
+---
+---
+
+<footer>
+  <span class="footer-copy">© 2026 Cam</span>
+  <div class="footer-links">
+    <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="mailto:hello@cam.dev">Email</a>
+  </div>
+</footer>
+
+<style>
+  footer {
+    padding: 40px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 1.5s forwards;
+  }
+
+  .footer-copy {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    color: var(--warm-mid);
+  }
+
+  .footer-links { display: flex; gap: 28px; }
+
+  .footer-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--warm-mid);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .footer-links a:hover { color: var(--rust); }
+</style>

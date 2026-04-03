@@ -1,0 +1,131 @@
+---
+interface Props {
+  title?: string;
+}
+const { title = 'Cam — Portfolio' } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+
+  <style is:global>
+    :root {
+      --cream: #f4f0e8;
+      --ink: #1a1714;
+      --rust: #b84b2f;
+      --warm-mid: #8c7b6b;
+      --line: rgba(26, 23, 20, 0.15);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--cream);
+      color: var(--ink);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* Grain overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 200px 200px;
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0.4;
+    }
+
+    /* Custom cursor */
+    .cursor {
+      position: fixed;
+      width: 8px;
+      height: 8px;
+      background: var(--rust);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.1s ease, width 0.2s ease, height 0.2s ease;
+    }
+    .cursor-ring {
+      position: fixed;
+      width: 32px;
+      height: 32px;
+      border: 1px solid var(--rust);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: transform 0.25s ease, opacity 0.2s ease;
+      opacity: 0.5;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 clamp(24px, 5vw, 80px);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <slot />
+
+  <script>
+    const cursor = document.getElementById('cursor');
+    const ring = document.getElementById('cursorRing');
+    let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      cursor.style.left = mouseX + 'px';
+      cursor.style.top = mouseY + 'px';
+    });
+
+    function animateRing() {
+      ringX += (mouseX - ringX) * 0.12;
+      ringY += (mouseY - ringY) * 0.12;
+      ring.style.left = ringX + 'px';
+      ring.style.top = ringY + 'px';
+      requestAnimationFrame(animateRing);
+    }
+    animateRing();
+
+    document.querySelectorAll('a, button, .work-card').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursor.style.width = '16px';
+        cursor.style.height = '16px';
+        ring.style.opacity = '0';
+      });
+      el.addEventListener('mouseleave', () => {
+        cursor.style.width = '8px';
+        cursor.style.height = '8px';
+        ring.style.opacity = '0.5';
+      });
+    });
+  </script>
+</body>
+</html>

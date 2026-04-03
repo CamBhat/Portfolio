@@ -1,0 +1,45 @@
+---
+const items = ['Design', 'Development', 'Systems Thinking', 'Clean Code', 'Open Source', 'Problem Solving'];
+---
+
+<div class="marquee-strip">
+  <div class="marquee-track">
+    {/* Duplicated for seamless loop */}
+    {[...items, ...items].map(item => (
+      <span class="marquee-item"><span>✦</span> {item}</span>
+    ))}
+  </div>
+</div>
+
+<style>
+  .marquee-strip {
+    overflow: hidden;
+    border-bottom: 1px solid var(--line);
+    padding: 18px 0;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.7s forwards;
+  }
+
+  .marquee-track {
+    display: flex;
+    gap: 64px;
+    animation: marquee 22s linear infinite;
+    width: max-content;
+  }
+
+  .marquee-item {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--warm-mid);
+    white-space: nowrap;
+  }
+
+  .marquee-item span { color: var(--rust); margin-right: 8px; }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+</style>

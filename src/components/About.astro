@@ -1,0 +1,48 @@
+---
+---
+
+<section class="about-strip" id="about">
+  <span class="about-label">About</span>
+  <p class="about-text">
+    I'm <strong>Cam</strong> — a builder who cares about the details.
+    I work at the intersection of thoughtful design and well-crafted software,
+    with a particular interest in <strong>developer tooling</strong> and
+    systems that scale gracefully. Based in North Carolina.
+  </p>
+</section>
+
+<style>
+  .about-strip {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 80px;
+    padding: 80px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    margin-top: 80px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 1.3s forwards;
+  }
+
+  .about-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--rust);
+    padding-top: 6px;
+  }
+
+  .about-text {
+    font-size: 1.6rem;
+    font-weight: 300;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+
+  .about-text strong { font-weight: 600; }
+
+  @media (max-width: 768px) {
+    .about-strip { grid-template-columns: 1fr; gap: 24px; }
+  }
+</style>

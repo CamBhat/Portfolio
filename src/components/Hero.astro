@@ -1,0 +1,111 @@
+---
+---
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="issue-tag">Available for work</div>
+    <h1>
+      Making<br />
+      things<br />
+      <em>worth</em><br />
+      building.
+    </h1>
+  </div>
+  <div class="hero-right">
+    <p class="hero-desc">
+      A portfolio of considered work — software, systems, and experiences
+      built with craft and intention.
+    </p>
+    <a href="#work" class="hero-cta">
+      View Selected Work
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding: 100px 0 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    align-items: end;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .hero-left {
+    opacity: 0;
+    animation: fadeUp 0.9s ease 0.3s forwards;
+  }
+
+  .issue-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .issue-tag::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: var(--rust);
+  }
+
+  h1 {
+    font-size: clamp(4rem, 8vw, 7.5rem);
+    font-weight: 300;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+
+  h1 em { font-style: italic; color: var(--rust); }
+
+  .hero-right {
+    padding-left: 80px;
+    opacity: 0;
+    animation: fadeUp 0.9s ease 0.5s forwards;
+  }
+
+  .hero-desc {
+    font-size: 1.35rem;
+    font-weight: 300;
+    line-height: 1.65;
+    color: var(--warm-mid);
+    margin-bottom: 40px;
+    max-width: 380px;
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--ink);
+    border: 1px solid var(--ink);
+    padding: 14px 24px;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+
+  .hero-cta:hover { background: var(--ink); color: var(--cream); }
+  .hero-cta svg { transition: transform 0.3s ease; }
+  .hero-cta:hover svg { transform: translateX(4px); }
+
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; gap: 48px; }
+    .hero-right { padding-left: 0; }
+    h1 { font-size: 3.5rem; }
+  }
+</style>

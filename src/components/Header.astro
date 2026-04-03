@@ -1,0 +1,64 @@
+---
+---
+
+<header>
+  <span class="site-label">Cam — Portfolio</span>
+  <nav>
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+    <a href="mailto:hello@cam.dev">Contact</a>
+  </nav>
+</header>
+
+<style>
+  header {
+    padding: 48px 0 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1px solid var(--line);
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.1s forwards;
+  }
+
+  .site-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 300;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--warm-mid);
+  }
+
+  nav { display: flex; gap: 36px; }
+
+  nav a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 300;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--warm-mid);
+    transition: color 0.2s ease;
+    position: relative;
+  }
+
+  nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--rust);
+    transition: width 0.3s ease;
+  }
+
+  nav a:hover { color: var(--ink); }
+  nav a:hover::after { width: 100%; }
+
+  @media (max-width: 768px) {
+    nav { gap: 20px; }
+  }
+</style>
